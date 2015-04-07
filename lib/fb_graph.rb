@@ -11,6 +11,9 @@ module FbGraph
   ).delete("\n\r")
   ROOT_URL = 'https://graph.facebook.com'
 
+  @v2 = true
+  V2_VERSION = 'v2.3'
+
   def self.v1!
     @v2 = false
   end
@@ -33,7 +36,7 @@ module FbGraph
     if self.api_version
       File.join(ROOT_URL, api_version)
     elsif self.v2?
-      File.join(ROOT_URL, 'v2.0')
+      File.join(ROOT_URL, V2_VERSION)
     else
       ROOT_URL
     end
